@@ -9,16 +9,20 @@ include(${VTK_USE_FILE})
 
 add_executable(ComputeGlacierVolume MACOSX_BUNDLE ComputeGlacierVolume)
 add_executable(ComputeGroundedArea MACOSX_BUNDLE ComputeGroundedArea)
+add_executable(ComputeMeltRateIntegral MACOSX_BUNDLE ComputeMeltRateIntegral)
 
 include_directories("/home/imerino/CODES/netcdf-cxx-4.2/BUILD/include/")
 #link_directories("/home/imerino/CODES/netcdf-cxx-4.2/BUILD/lib/")
 
 #link_directories("/../../../CODES/netcdf-cxx-4.2/BUILD/lib/")
 
+#set( CMAKE_CXX_FLAGS "-Wall -m64 -O3 -g " )
+
 find_library(NETCDF_LIB NAMES netcdf_c++ PATHS /home/imerino/CODES/netcdf-cxx-4.2/BUILD/lib/)
 
 target_link_libraries(ComputeGlacierVolume ${NETCDF_LIB})
 target_link_libraries(ComputeGroundedArea ${NETCDF_LIB})
+target_link_libraries(ComputeMeltRateIntegral ${NETCDF_LIB})
 
 if(VTK_LIBRARIES)
   target_link_libraries(ComputeGlacierVolume ${VTK_LIBRARIES})
